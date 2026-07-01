@@ -36,8 +36,41 @@
         }
     }
 
+//3. Enregistrer nouvelle categorie
+$codeEstTrouver=false;
+$categorie=[];
+    do {
+        $code=readline("Entrer le code: ");
+        foreach ($categories as $categorie ) {
+            if($categorie['code']==$code){
+                echo "Le code doit etre unique \n";
+                $codeEstTrouver=true;
+                $code=readline("Entrer le code: ");
 
- 
+            }
+        }
+    } while ($code==""&&$codeEstTrouver);
+
+    $nomEstTrouver=false;
+
+    do {
+        $nom=readline("Entrer le nom: ");
+        foreach ($categories as $categorie ) {
+            if($categorie['nom']==$nom){
+                echo 'Le nom doit etre unique';
+                $nomEstTrouver=true;
+            }
+        }
+    } while ($nom==""&&$nomEstTrouver);
+    $categorie= ['code'=>$code,
+                   'nom'=>$nom,
+                   'produits'=>[]
+                 ];
+
+    $categories[]=$categorie;
+
+    print_r($categories);
+
 
 
 
