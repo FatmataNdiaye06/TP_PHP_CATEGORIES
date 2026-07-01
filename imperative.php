@@ -52,7 +52,6 @@ $categorie=[];
     } while ($code==""&&$codeEstTrouver);
 
     $nomEstTrouver=false;
-
     do {
         $nom=readline("Entrer le nom: ");
         foreach ($categories as $categorie ) {
@@ -69,9 +68,61 @@ $categorie=[];
 
     $categories[]=$categorie;
 
-    print_r($categories);
+    // print_r($categories);
 
+// 4. Rechercher une categorie et lui ajouter des produits
 
+$code=readline("Entrer le code: ");
+        
+ foreach ($categories as $categorie =>$value) {
+    $index=$categorie;
+        if($value['code']==$code){
+
+        $nomEstTrouver=false;
+    do {
+        $nom=readline("Entrer le nom: ");
+        foreach ($categories as $categorie ) {
+            if($categorie['nom']==$nom){
+                echo 'Le nom doit etre unique';
+                $nomEstTrouver=true;
+            }
+        }
+    } while ($nom==""&&$nomEstTrouver);
+    
+    $refEstTrouver=false;
+    do {
+        $ref=readline("Entrer le ref: ");
+        foreach ($categories as $categorie ) {
+            var_dump($categorie['produits']     ['ref']);
+            die;
+            if($categorie['produits']['ref']==$ref){
+                echo 'Le ref doit etre unique';
+                $refEstTrouver=true;
+            }
+        }
+    } while ($nom==""&&$refEstTrouver);
+    do {
+        $prix=readline("Entrer le prix: ");
+            if($prix<0){
+                echo 'Le prix doit etre positif';
+            }
+    } while ($prix>0);
+     do {
+        $qte=readline("Entrer le prix: ");
+            if($qte<0){
+                echo 'Le prix doit etre positif';
+            }
+    } while ($qte>0);
+            $produit=[
+                    'nom'=>$nom,
+                    'ref'=>$ref,
+                    'prix'=>$prix,
+                    'qte'=>$qte
+                ];
+                $produits[]=$produit;
+                $categories[$index]['produit']=$produits;
+        }
+    }
 
 
 
