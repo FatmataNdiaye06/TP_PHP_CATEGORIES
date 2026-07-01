@@ -26,7 +26,15 @@
             'produits'=>[]
         ]
     ];
- print_r($categories);
+ //print_r($categories);
+
+ //2.Afficher categories sans produits
+
+    foreach ($categories as $categorie) {
+        if(empty($categorie['produits'])){
+            print_r($categorie);
+        }
+    }
 
 
  
